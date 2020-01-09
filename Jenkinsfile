@@ -10,7 +10,7 @@ pipeline {
       steps {
         withMaven(maven: 'M3') {
               // some block
-          sh 'mvn clean install'
+          sh 'mvn clean install -DskipTests'
         }
       }
     }
