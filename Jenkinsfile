@@ -11,7 +11,6 @@ pipeline {
     }
   
   stages {
-    def node = tool 'node'
     stage('Build') {
       steps {
               // some block
