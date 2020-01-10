@@ -3,7 +3,6 @@ pipeline {
     node {
       label 'master'
     }
-
   }
 
 
@@ -17,11 +16,10 @@ pipeline {
         }
       }
     }
+    
     stage('Scan') {
       steps {
-
         withMaven(maven: 'M3') {
-
           // to know where is sonar url
           // maven not use sonar-project.properties
           // name of sonar in configure system
@@ -30,7 +28,6 @@ pipeline {
               sh 'echo $PATH'
               sh 'mvn sonar:sonar -Dsonar.nodejs.executable=${node}/bin/node'
           }
-
         }
       }
     }
