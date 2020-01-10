@@ -6,8 +6,9 @@ pipeline {
 
   }
 tools {
+  // name of tool and
   // name of global tool configuration
-  node 'node'
+  nodejs 'node'
 }
 
   stages {
