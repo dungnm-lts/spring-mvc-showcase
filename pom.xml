@@ -32,7 +32,6 @@
 		  <sonar.log.level>DEBUG</sonar.log.level>
 		  <sonar.verbose>true</sonar.verbose>
 		  <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
-		  <sonar.nodejs.executable>/usr/bin/node</sonar.nodejs.executable>  
             </properties>
         </profile>
      </profiles>
