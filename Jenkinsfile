@@ -8,7 +8,6 @@ pipeline {
     tools {
         nodejs 'node'
         maven 'M3'
-        sonar 'sonar'
     }
 
   stages {
@@ -20,6 +19,9 @@ pipeline {
     }
 
     stage('Scan') {
+      environment {
+        scannerHome = tool 'sonar'
+      }
       steps {
           // to know where is sonar url
           // maven not use sonar-project.properties
@@ -27,7 +29,7 @@ pipeline {
           withSonarQubeEnv('sonarqube'){
               // some block
               sh 'echo $PATH'
-              sh "sonar-scanner"
+              sh "${scannerHome}/bin/sonar-scanner"
           }
         }
 
