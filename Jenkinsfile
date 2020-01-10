@@ -5,6 +5,11 @@ pipeline {
     }
 
   }
+tools {
+  // name of global tool configuration
+  node 'node'
+}
+
   stages {
     stage('Build') {
       steps {
@@ -16,8 +21,7 @@ pipeline {
     }
     stage('Scan') {
       steps {
-        // name of global tool configuration
-        def node = 'node'
+
         withMaven(maven: 'M3') {
 
           // to know where is sonar url
@@ -26,7 +30,7 @@ pipeline {
           withSonarQubeEnv('sonarqube'){
               // some block
               sh 'echo $PATH'
-              sh 'mvn sonar:sonar -Dsonar.nodejs.executable=${tool node}/bin/node'
+              sh 'mvn sonar:sonar -Dsonar.nodejs.executable=node'
           }
 
         }
