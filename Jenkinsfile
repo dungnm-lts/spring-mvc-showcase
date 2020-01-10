@@ -8,7 +8,6 @@ pipeline {
     tools {
         nodejs 'node'
         maven 'M3'
-        'sonar'
     }
 
   stages {
