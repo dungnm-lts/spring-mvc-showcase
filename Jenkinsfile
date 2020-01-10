@@ -7,7 +7,6 @@ pipeline {
 
     tools {
         nodejs 'node' 
-        maven 'M3'
     }
   
   stages {
