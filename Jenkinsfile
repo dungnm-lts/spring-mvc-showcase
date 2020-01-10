@@ -5,13 +5,10 @@ pipeline {
     }
 
   }
-tools {
-  // name of tool and
-  // name of global tool configuration
-  nodejs 'node'
-}
+
 
   stages {
+    def node = tool 'node'
     stage('Build') {
       steps {
         withMaven(maven: 'M3') {
@@ -31,7 +28,7 @@ tools {
           withSonarQubeEnv('sonarqube'){
               // some block
               sh 'echo $PATH'
-              sh 'mvn sonar:sonar -Dsonar.nodejs.executable=node'
+              sh 'mvn sonar:sonar -Dsonar.nodejs.executable=${node}/bin/node'
           }
 
         }
