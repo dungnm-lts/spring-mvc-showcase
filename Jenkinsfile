@@ -26,7 +26,7 @@ pipeline {
           withSonarQubeEnv('sonarqube'){
               // some block
               sh 'echo $PATH'
-              sh 'mvn sonar:sonar -Dsonar.nodejs.executable=node'
+              sh 'mvn sonar:sonar'
           }
         }
       
