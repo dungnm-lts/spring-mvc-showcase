@@ -8,7 +8,7 @@ pipeline {
     tools {
         nodejs 'node'
         maven 'M3'
-        "SonarQube Scanner" 'sonar'
+        'sonar'
     }
 
   stages {
