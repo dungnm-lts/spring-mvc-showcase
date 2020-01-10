@@ -17,12 +17,14 @@ pipeline {
     stage('Scan') {
       steps {
         withMaven(maven: 'M3') {
+          withEnv(["PATH+NODE=${tool 'node'}/bin]) {
           // to know where is sonar url
           // maven not use sonar-project.properties
           withSonarQubeEnv('sonarqube'){
               // some block
               sh 'mvn sonar:sonar'
           }
+                   }
         }
       }
     }
