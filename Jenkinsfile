@@ -1,9 +1,6 @@
 pipeline {
-  agent {
-    node {
-      label 'master'
-    }
-  }
+  agent { label 'docker' }
+
   // set max timout for pipeline
   options {
       timeout(time: 60, unit: 'MINUTES')
