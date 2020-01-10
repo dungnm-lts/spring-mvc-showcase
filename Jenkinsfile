@@ -4,7 +4,10 @@ pipeline {
       label 'master'
     }
   }
-
+  // set max timout for pipeline
+  options {
+      timeout(time: 3, unit: 'MINUTES')
+  }
     tools {
         nodejs 'node'
         maven 'M3'
@@ -30,6 +33,10 @@ pipeline {
               // some block
               sh 'echo $PATH'
               sh "${scannerHome}/bin/sonar-scanner"
+          }
+
+          timeout(time: 1, unit: 'MINUTES') {
+              sh 'echo scan timeout'
           }
         }
 
