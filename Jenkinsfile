@@ -6,7 +6,7 @@ pipeline {
   }
   // set max timout for pipeline
   options {
-      timeout(time: 3, unit: 'MINUTES')
+      timeout(time: 60, unit: 'MINUTES')
   }
     tools {
         nodejs 'node'
@@ -34,10 +34,11 @@ pipeline {
               sh 'echo $PATH'
               sh "${scannerHome}/bin/sonar-scanner"
           }
-
-          timeout(time: 1, unit: 'MINUTES') {
-              sh 'echo scan timeout'
-          }
+          timeout(time: 30, unit: 'MINUTES') {
+                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    waitForQualityGate abortPipeline: true
+                }
         }
 
     }
