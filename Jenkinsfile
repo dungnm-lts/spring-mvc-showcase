@@ -22,6 +22,7 @@ pipeline {
           // maven not use sonar-project.properties
           withSonarQubeEnv('sonarqube'){
               // some block
+            sh 'echo $PATH'
               sh 'mvn sonar:sonar'
           }
                    }
