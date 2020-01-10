@@ -6,7 +6,7 @@ pipeline {
   }
 
     tools {
-        nodejs 'node'
+        node 'node'
         maven 'M3'
     }
 
@@ -14,7 +14,7 @@ pipeline {
     stage('Build') {
       steps {
               // some block
-          sh 'mvn clean install -DskipTests'
+          sh 'mvn clean install'
       }
     }
 
