@@ -7,6 +7,7 @@ pipeline {
     }
   }
 
+  
   // set max timout for pipeline
   options {
       timeout(time: 60, unit: 'MINUTES')
