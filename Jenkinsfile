@@ -1,6 +1,11 @@
 pipeline {
-  agent { 
-    label 'docker' 
+  
+  agent {
+    docker {
+        image 'my-jenkins-slave-mew'
+        label 'my-jenkins-slave-new'
+        args  '-v /home/ubuntu/cache-vol:/home/jenkins/.m2'
+    }
   }
   
   // set max timout for pipeline
