@@ -45,14 +45,7 @@ pipeline {
   }
   post {
       always {
-        def attachments = [
-            [
-              text: 'I find your lack of faith disturbing!',
-              fallback: 'Hey, Vader seems to be mad at you.',
-              color: '#ff0000'
-            ]
-          ]
-          slackSend(channel: '#devops', attachments: attachments)
+          slackSend (color: "#E44A29", message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
       }
    }
 }
