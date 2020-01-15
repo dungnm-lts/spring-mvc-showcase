@@ -45,7 +45,7 @@ pipeline {
   }
   post {
       always {
-          slackSend (color: "#E44A29", message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+        slackSend (color: "#E44A29", message: "Build Started - ${env.GIT_COMMIT} --- ${env.GIT_URL} --- ${env.GIT_AUTHOR_NAME} --- ${env.JOB_NAME} --- ${env.BUILD_NUMBER} --- (<${env.BUILD_URL}|Open>)")
       }
    }
 }
