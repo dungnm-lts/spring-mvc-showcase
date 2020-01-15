@@ -3,7 +3,6 @@ pipeline {
   agent {
     docker {
         image 'my-jenkins-slave-mew'
-        label 'my-jenkins-slave-new'
         args  '-v /home/ubuntu/cache-vol:/home/jenkins/.m2'
     }
   }
