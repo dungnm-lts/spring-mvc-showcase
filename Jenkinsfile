@@ -45,7 +45,14 @@ pipeline {
   }
   post {
       always {
-          slackSend (channel: "devops", message: "Here is the primary message")
+        def attachments = [
+            [
+              text: 'I find your lack of faith disturbing!',
+              fallback: 'Hey, Vader seems to be mad at you.',
+              color: '#ff0000'
+            ]
+          ]
+          slackSend(channel: '#devops', attachments: attachments)
       }
    }
 }
