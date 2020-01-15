@@ -1,5 +1,11 @@
 pipeline {
-  agent { label 'docker' }
+  agent { 
+    label 'docker' 
+    docker {
+        image 'my-jenkins-slave-mew'
+        args '-v $HOME/.m2:/root/.m2'
+    }
+  }
 
   // set max timout for pipeline
   options {
