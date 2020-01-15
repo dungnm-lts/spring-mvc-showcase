@@ -6,7 +6,6 @@ pipeline {
         args '-v $HOME/.m2:/root/.m2'
     }
   }
-
   
   // set max timout for pipeline
   options {
