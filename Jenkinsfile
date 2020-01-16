@@ -1,5 +1,8 @@
 script {
-         env.foo=$(git show --name-only)
+  env.foo = sh (
+             script: 'git log --format="%ae" | head -1 ',
+             returnStdout: true
+         ).trim()
 }
 pipeline {
 
