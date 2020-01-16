@@ -45,13 +45,21 @@ pipeline {
   }
   post {
       always {
-            script {
-      foo = sh (
-             script: 'git log --format="%ae" | head -1',
-             returnStdout: true
-         ).trim()
-    }
-        slackSend (color: "#E44A29", message: "Build Started - ${env.GIT_COMMIT} --- ${foo}--- ${env.GIT_COMMITTER_EMAIL} --- ${env.GIT_URL} --- ${env.GIT_AUTHOR_NAME} --- ${env.JOB_NAME} --- ${env.BUILD_NUMBER} --- (<${env.BUILD_URL}|Open>)")
+        script {
+          COMMITTER_NAME = sh (
+               script: 'git log --format="%an" | head -1',
+               returnStdout: true
+           ).trim()
+          COMMITTER_DATE = sh (
+               script: 'git log --format="%aD" | head -1',
+               returnStdout: true
+            ).trim()
+          MESSAGE = sh (
+            script: "git log --format=%B -n 1 ${env.GIT_COMMIT}",
+            returnStdout: true
+            ).trim()
+        }
+        slackSend (color: "#E44A29", message: "Build Started - git commit: ${env.GIT_COMMIT} --- name: ${COMMITTER_NAME} --- date: ${COMMITTER_DATE} --- git url: ${env.GIT_URL} --- message: ${MESSAGE} --- job name: ${env.JOB_NAME} --- build num: ${env.BUILD_NUMBER} --- build url: (<${env.BUILD_URL}|Open>)")
       }
    }
 }
