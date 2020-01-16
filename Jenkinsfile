@@ -44,13 +44,13 @@ pipeline {
       }
   }
   post {
-    script {
+      always {
+            script {
       foo = sh (
              script: 'git log --format="%ae" | head -1',
              returnStdout: true
          ).trim()
     }
-      always {
         slackSend (color: "#E44A29", message: "Build Started - ${env.GIT_COMMIT} --- ${foo}--- ${env.GIT_COMMITTER_EMAIL} --- ${env.GIT_URL} --- ${env.GIT_AUTHOR_NAME} --- ${env.JOB_NAME} --- ${env.BUILD_NUMBER} --- (<${env.BUILD_URL}|Open>)")
       }
    }
